@@ -4,7 +4,15 @@ ruby "3.3.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
-
+gem 'devise', '~> 4.9'
+gem 'font-awesome-rails'
+gem 'sassc', '~> 2.4'
+gem 'bootstrap_sb_admin_base_v2'
+gem 'rails-i18n', '~> 7.0', '>= 7.0.1'
+gem 'rubocop', '~> 1.36', require: false
+gem 'sass-rails', '~> 6.0'
+gem 'mailcatcher'
+gem 'sqlite3'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -45,6 +53,19 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  gem 'annotate', '~> 3.1', '>= 3.1.1'
+  gem 'better_errors', '~> 2.9', '>= 2.9.1'
+  gem 'binding_of_caller', '~> 1.0'
+  gem 'brakeman', '~> 5.2'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'pry', '~> 0.14.1'
+  gem 'rspec-rails'
+  gem 'rubycritic'
+  gem 'shoulda-matchers'
+  gem 'simplecov'
+  gem 'rails-erd'
+  gem 'byebug', platform: :mri
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
 end
