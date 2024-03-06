@@ -15,11 +15,14 @@
 #  updated_at      :datetime         not null
 #
 class Municipe < ApplicationRecord
+  has_one_attached :foto
+  has_one :endereco
+  accepts_nested_attributes_for :endereco
+  
   validates :cpf, presence: true
   validates :cns, presence: true
   validates :email, presence: true
   validates :data_nascimento, presence: true
-  validates :nome_completo, presence: true
 
   validate :data_nascimento_valida?
 
