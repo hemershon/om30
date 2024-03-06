@@ -17,9 +17,10 @@
 class Municipe < ApplicationRecord
   has_one_attached :foto
   has_one :endereco
+
   accepts_nested_attributes_for :endereco
 
-  validates :cpf, presence: true
+  validates :cpf, presence: true, format: { with: /\A\d{11}\z/, message: "CPF inválido" }
   validates :cns, presence: true
   validates :email, presence: true
   validates :data_nascimento, presence: true
@@ -46,7 +47,7 @@ class Municipe < ApplicationRecord
     return false if data_nascimento.nil?
 
     begin
-      data = Date.strptime(data_nascimento, '%d/%m/%y')
+      data = Date.strptime(data_nascimento, '%d/%m/%Y')
       hoje = Date.today
 
       return data <= hoje && data.year > 1900 && data.month.between?(1, 12) && data.day.between?(1, Date.new(data.year, data.month, -1).day)

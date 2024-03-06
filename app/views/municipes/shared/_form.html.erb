@@ -1,0 +1,41 @@
+<%= form_with(model: municipe, local: true) do |form| %>
+  <% if municipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(municipe.errors.count, "erro") %> ocorreu enquanto tentava salvar o municipe:</h2>
+
+      <ul>
+      <% municipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome_completo %>
+    <%= form.text_field :nome_completo %>
+  </div>
+
+  <!-- Outros campos do municipe -->
+
+  <h2>Endereço</h2>
+  <div class="field">
+    <%= form.label :cep, 'CEP' %>
+    <%= form.text_field :cep, id: 'cep_input' %>
+  </div>
+
+  <div class="field" id="endereco_fields" style="display: none;">
+    <%= form.label :rua, 'Rua' %>
+    <%= form.text_field :rua %>
+    <%= form.label :numero, 'Número' %>
+    <%= form.text_field :numero %>
+    <%= form.label :cidade, 'Cidade' %>
+    <%= form.text_field :cidade %>
+    <%= form.label :estado, 'Estado' %>
+    <%= form.text_field :estado %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

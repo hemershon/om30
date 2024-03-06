@@ -4,7 +4,7 @@ RSpec.describe Municipe, type: :model do
   
   context 'data de nascimento' do 
     it 'é válida' do
-      pessoa = Municipe.new(data_nascimento: '30/04/1990')
+      municipe = Municipe.new(data_nascimento: '30/04/1990')
       expect(municipe).to be_valid
     end
 

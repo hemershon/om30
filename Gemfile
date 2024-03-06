@@ -66,6 +66,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'rails-erd'
   gem 'byebug', platform: :mri
+    gem 'cpf_faker'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
 end

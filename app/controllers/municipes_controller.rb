@@ -1,6 +1,6 @@
 class MunicipesController < ApplicationController
   def index
-    @municipes = Municipe.all
+    @municipes = Municipe.includes(:endereco).all
   end
 
   def show
