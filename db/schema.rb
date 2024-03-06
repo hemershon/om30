@@ -30,7 +30,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_225113) do
 
   create_table "municipes", force: :cascade do |t|
     t.string "nome_completo"
-    t.string "cpf_cns"
+    t.string "cpf"
+    t.string "cns"
     t.string "email"
     t.date "data_nascimento"
     t.string "telefone"
