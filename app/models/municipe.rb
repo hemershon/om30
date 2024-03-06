@@ -18,15 +18,25 @@ class Municipe < ApplicationRecord
   has_one_attached :foto
   has_one :endereco
   accepts_nested_attributes_for :endereco
-  
+
   validates :cpf, presence: true
   validates :cns, presence: true
   validates :email, presence: true
   validates :data_nascimento, presence: true
 
+  after_create :enviar_notificaçao_criacao
+  after_update :enviar_notificaçao_atualizacao
+
   validate :data_nascimento_valida?
 
   private
+
+  def enviar_notificaçao_criacao
+    
+  end
+
+  def enviar_notificaçao_atualizacao
+  end
 
   def data_nascimento_valida?
     errors.add(:data_nascimento, 'Data de nascimento inválida') unless data_nascimento_valida?

@@ -29,5 +29,5 @@ class Endereco < ApplicationRecord
   validates :numero, presence: true
   validates :cidade, presence: true
   validates :estado, presence: true
-  validates :cep, presence, :true, format: { with: /\A\d{5}-\d{3}\z/, message: "Formato de CEP inválido" }
+  validates :cep, presence: true, format: { with: /\A\d{5}-\d{3}\z/, message: "Formato de CEP inválido" }
 end
