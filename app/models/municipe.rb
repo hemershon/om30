@@ -25,9 +25,6 @@ class Municipe < ApplicationRecord
   validates :email, presence: true
   validates :data_nascimento, presence: true
 
-  after_create :enviar_notificaçao_criacao
-  after_update :enviar_notificaçao_atualizacao
-
   validate :data_nascimento_valida?
 
   private
