@@ -13,7 +13,6 @@ class MunicipesController < ApplicationController
   end
 
   def create
-    byebug
     @municipe = Municipe.new(municipe_params)
     if @municipe.save
       send_email(@municipe)
