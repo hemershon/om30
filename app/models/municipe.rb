@@ -20,15 +20,15 @@ class Municipe < ApplicationRecord
 
   accepts_nested_attributes_for :endereco
 
-  validates :cpf, presence: true, format: { with: /\A\d{11}\z/, message: "CPF inválido" }
-  validates :cns, presence: true
-  validates :email, presence: true
-  validates :data_nascimento, presence: true
+  # validates :cpf, presence: true, format: { with: /\A\d{11}\z/, message: "CPF inválido" }
+  # validates :cns, presence: true
+  # validates :email, presence: true
+  # validates :data_nascimento, presence: true
 
   after_create :enviar_notificaçao_criacao
   after_update :enviar_notificaçao_atualizacao
 
-  validate :data_nascimento_valida?
+  # validate :data_nascimento_valida?
 
   private
 
@@ -39,20 +39,20 @@ class Municipe < ApplicationRecord
   def enviar_notificaçao_atualizacao
   end
 
-  def data_nascimento_valida?
-    errors.add(:data_nascimento, 'Data de nascimento inválida') unless data_nascimento_valida?
-  end
+  # def data_nascimento_valida?
+  #   errors.add(:data_nascimento, 'Data de nascimento inválida') unless data_nascimento_valida?
+  # end
 
-  def data_nascimento_valida?
-    return false if data_nascimento.nil?
+  # def data_nascimento_valida?
+  #   return false if data_nascimento.nil?
 
-    begin
-      data = Date.strptime(data_nascimento, '%d/%m/%Y')
-      hoje = Date.today
+  #   begin
+  #     data = Date.strptime(data_nascimento, '%d/%m/%Y')
+  #     hoje = Date.today
 
-      return data <= hoje && data.year > 1900 && data.month.between?(1, 12) && data.day.between?(1, Date.new(data.year, data.month, -1).day)
-    rescue ArgumentError
-      return false
-    end
-  end
+  #     return data <= hoje && data.year > 1900 && data.month.between?(1, 12) && data.day.between?(1, Date.new(data.year, data.month, -1).day)
+  #   rescue ArgumentError
+  #     return false
+  #   end
+  # end
 end

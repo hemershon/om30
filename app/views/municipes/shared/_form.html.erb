@@ -1,10 +1,10 @@
-<%= form_with(model: municipe, local: true) do |form| %>
-  <% if municipe.errors.any? %>
+<%= form_with(model: @municipe, local: true) do |form| %>
+  <% if @municipe.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(municipe.errors.count, "erro") %> ocorreu enquanto tentava salvar o municipe:</h2>
+      <h2><%= pluralize(@municipe.errors.count, "erro") %> ocorreu enquanto tentava salvar o municipe:</h2>
 
       <ul>
-      <% municipe.errors.full_messages.each do |message| %>
+      <% @municipe.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -16,26 +16,71 @@
     <%= form.text_field :nome_completo %>
   </div>
 
-  <!-- Outros campos do municipe -->
-
-  <h2>Endereço</h2>
   <div class="field">
-    <%= form.label :cep, 'CEP' %>
-    <%= form.text_field :cep, id: 'cep_input' %>
+    <%= form.label :cpf %>
+    <%= form.text_field :cpf %>
   </div>
 
-  <div class="field" id="endereco_fields" style="display: none;">
-    <%= form.label :rua, 'Rua' %>
-    <%= form.text_field :rua %>
-    <%= form.label :numero, 'Número' %>
-    <%= form.text_field :numero %>
-    <%= form.label :cidade, 'Cidade' %>
-    <%= form.text_field :cidade %>
-    <%= form.label :estado, 'Estado' %>
-    <%= form.text_field :estado %>
+  <div class="field">
+    <%= form.label :cns %>
+    <%= form.text_field :cns %>
   </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_nascimento %>
+    <%= form.date_field :data_nascimento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefone %>
+    <%= form.text_field :telefone %>
+  </div>
+
+  <%= form.fields_for :endereco do |endereco_form| %>
+    <%= endereco_form.label :cep %>
+    <%= endereco_form.text_field :cep %>
+    <%= endereco_form.label :cep %>
+    <%= endereco_form.text_field :cep %>
+
+    <%= endereco_form.label :bairro %>
+    <%= endereco_form.text_field :bairro %>
+
+    <%= endereco_form.label :cidade %>
+    <%= endereco_form.text_field :cidade %>
+
+    <%= endereco_form.label :codigo_ibge %>
+    <%= endereco_form.text_field :codigo_ibge %>
+
+    <%= endereco_form.label :complemento %>
+    <%= endereco_form.text_field :complemento %>
+
+    <%= endereco_form.label :logradouro %>
+    <%= endereco_form.text_field :logradouro %>
+
+    <%= endereco_form.label :uf %>
+    <%= endereco_form.text_field :uf %>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :foto %>
+    <%= form.text_field :foto %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.check_box :status %>
+  </div>
+
+
 
   <div class="actions">
     <%= form.submit %>
   </div>
+  <%= link_to "Voltar", :back, class: "btn btn-primary" %>
+
 <% end %>

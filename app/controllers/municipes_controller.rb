@@ -9,12 +9,12 @@ class MunicipesController < ApplicationController
 
   def new
     @municipe = Municipe.new
+    @municipe.build_endereco
   end
 
   def create
     @municipe = Municipe.new(municipe_params)
     if @municipe.save
-      # Envio de email e SMS aqui
       redirect_to @municipe, notice: 'Munícipe criado com sucesso.'
     else
       render :new
@@ -28,7 +28,7 @@ class MunicipesController < ApplicationController
   def update
     @municipe = Municipe.find(params[:id])
     if @municipe.update(municipe_params)
-      # Envio de email e SMS aqui
+
       redirect_to @municipe, notice: 'Munícipe atualizado com sucesso.'
     else
       render :edit

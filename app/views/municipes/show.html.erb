@@ -1,0 +1,10 @@
+<h1>Detalhes do Munícipe</h1>
+<p><strong>Nome Completo:</strong> <%= @municipe.nome_completo %></p>
+<p><strong>CPF:</strong> <%= @municipe.cpf %></p>
+<p><strong>CNS:</strong> <%= @municipe.cns %></p>
+<p><strong>Email:</strong> <%= @municipe.email %></p>
+<p><strong>Data de Nascimento:</strong> <%= @municipe.data_nascimento %></p>
+<p><strong>Telefone:</strong> <%= @municipe.telefone %></p>
+<p><strong>Status:</strong> <%= @municipe.status ? 'Ativo' : 'Inativo' %></p>
+<%= link_to 'Editar', edit_municipe_path(@municipe) %> |
+<%= link_to 'Voltar', municipes_path %>
