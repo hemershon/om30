@@ -1,6 +1,8 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import "controllers"
+//= require bootstrap
+
 document.addEventListener('DOMContentLoaded', function() {
   const cepInput = document.getElementById('cep_input');
   const enderecoFields = document.getElementById('endereco_fields');

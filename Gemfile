@@ -58,6 +58,7 @@ group :development, :test do
   gem 'binding_of_caller', '~> 1.0'
   gem 'brakeman', '~> 5.2'
   gem 'factory_bot_rails'
+  gem 'bootstrap', '~> 5.3.0'
   gem 'faker'
   gem 'pry', '~> 0.14.1'
   gem 'rspec-rails'
