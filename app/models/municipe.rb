@@ -32,13 +32,6 @@ class Municipe < ApplicationRecord
 
   private
 
-  def enviar_notificaçao_criacao
-    
-  end
-
-  def enviar_notificaçao_atualizacao
-  end
-
   def data_nascimento_valida?
     errors.add(:data_nascimento, 'Data de nascimento inválida') unless data_nascimento_valida?
   end

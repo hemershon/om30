@@ -15,6 +15,8 @@ class MunicipesController < ApplicationController
   def create
     @municipe = Municipe.new(municipe_params)
     if @municipe.save
+      send_email(@municipe)
+      send_sms(@municipe)
       redirect_to @municipe, notice: 'Munícipe criado com sucesso.'
     else
       render :new
@@ -28,6 +30,8 @@ class MunicipesController < ApplicationController
   def update
     @municipe = Municipe.find(params[:id])
     if @municipe.update(municipe_params)
+      send_email(@municipe)
+      send_sms(@municipe)
 
       redirect_to @municipe, notice: 'Munícipe atualizado com sucesso.'
     else
@@ -36,6 +40,19 @@ class MunicipesController < ApplicationController
   end
 
   private
+
+  def send_email(municipe)
+    MunicipeMailer.cadastro_confirmado(municipe).delivery_now
+  end
+
+  def send_sms(municipe)
+  client = Twilio::REST::Client.new(Rails.application.config.twilio_account_sid, Rails.application.config.twilio_auth_token)
+  client.messages.create(
+    from: '86999263314',
+    to: municipe.telefone,
+    body: 'Seu SMS de confirmação aqui'
+  )
+  end
 
   def municipe_params
     params.require(:municipe).permit(:nome_completo, :cpf, :cns, :email, :data_nascimento, :telefone, :foto, :status)
