@@ -7,6 +7,7 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 
 gem 'font-awesome-rails'
 gem 'sassc', '~> 2.4'
+gem 'bootstrap', '~> 5.3.0'
 gem 'bootstrap_sb_admin_base_v2'
 gem 'rails-i18n', '~> 7.0', '>= 7.0.1'
 gem 'rubocop', '~> 1.36', require: false
@@ -58,14 +59,12 @@ group :development, :test do
   gem 'binding_of_caller', '~> 1.0'
   gem 'brakeman', '~> 5.2'
   gem 'factory_bot_rails'
-  gem 'bootstrap', '~> 5.3.0'
   gem 'faker'
   gem 'pry', '~> 0.14.1'
   gem 'rspec-rails'
-  gem 'rubycritic'
+
   gem 'shoulda-matchers'
   gem 'simplecov'
-  gem 'rails-erd'
   gem 'byebug', platform: :mri
     gem 'cpf_faker'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
