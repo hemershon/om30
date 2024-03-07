@@ -1,86 +1,99 @@
-<%= form_with(model: @municipe, local: true) do |form| %>
-  <% if @municipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@municipe.errors.count, "erro") %> ocorreu enquanto tentava salvar o municipe:</h2>
+<div class="card">
+  <div class="card-header">
+    Cadastro de Munícipe
+  </div>
+  <div class="card-body">
+    <%= form_with(model: @municipe, local: true) do |form| %>
+      <% if @municipe.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@municipe.errors.count, "erro") %> ocorreu enquanto tentava salvar o municipe:</h2>
 
-      <ul>
-      <% @municipe.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @municipe.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :nome_completo %>
-    <%= form.text_field :nome_completo %>
+      <div class="mb-3">
+        <%= form.label :nome_completo, class: "form-label" %>
+        <%= form.text_field :nome_completo, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :cpf, class: "form-label" %>
+        <%= form.text_field :cpf, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :cns, class: "form-label" %>
+        <%= form.text_field :cns, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :email, class: "form-label" %>
+        <%= form.text_field :email, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :data_nascimento, class: "form-label" %>
+        <%= form.date_field :data_nascimento, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :telefone, class: "form-label" %>
+        <%= form.text_field :telefone, class: "form-control" %>
+      </div>
+
+      <!-- Linha separadora -->
+      <hr>
+
+      <%= form.fields_for :endereco do |endereco_form| %>
+        <div class="mb-3">
+          <%= endereco_form.label :cep, class: "form-label" %>
+          <%= endereco_form.text_field :cep, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= endereco_form.label :bairro, class: "form-label" %>
+          <%= endereco_form.text_field :bairro, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= endereco_form.label :cidade, class: "form-label" %>
+          <%= endereco_form.text_field :cidade, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= endereco_form.label :codigo_ibge, class: "form-label" %>
+          <%= endereco_form.text_field :codigo_ibge, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= endereco_form.label :complemento, class: "form-label" %>
+          <%= endereco_form.text_field :complemento, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= endereco_form.label :logradouro, class: "form-label" %>
+          <%= endereco_form.text_field :logradouro, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= endereco_form.label :uf, class: "form-label" %>
+          <%= endereco_form.text_field :uf, class: "form-control" %>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :foto, class: "form-label" %>
+        <%= form.text_field :foto, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :status, class: "form-label" %>
+        <%= form.check_box :status, class: "form-check-input" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.submit "Salvar", class: "btn btn-primary" %>
+      </div>
+      <%= link_to "Voltar", :back, class: "btn btn-secondary" %>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :cpf %>
-    <%= form.text_field :cpf %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cns %>
-    <%= form.text_field :cns %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :data_nascimento %>
-    <%= form.date_field :data_nascimento %>
-  </div>
-
-  <div class="field">
-    <%= form.label :telefone %>
-    <%= form.text_field :telefone %>
-  </div>
-
-  <%= form.fields_for :endereco do |endereco_form| %>
-    <%= endereco_form.label :cep %>
-    <%= endereco_form.text_field :cep %>
-    <%= endereco_form.label :cep %>
-    <%= endereco_form.text_field :cep %>
-
-    <%= endereco_form.label :bairro %>
-    <%= endereco_form.text_field :bairro %>
-
-    <%= endereco_form.label :cidade %>
-    <%= endereco_form.text_field :cidade %>
-
-    <%= endereco_form.label :codigo_ibge %>
-    <%= endereco_form.text_field :codigo_ibge %>
-
-    <%= endereco_form.label :complemento %>
-    <%= endereco_form.text_field :complemento %>
-
-    <%= endereco_form.label :logradouro %>
-    <%= endereco_form.text_field :logradouro %>
-
-    <%= endereco_form.label :uf %>
-    <%= endereco_form.text_field :uf %>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :foto %>
-    <%= form.text_field :foto %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.check_box :status %>
-  </div>
-
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-  <%= link_to "Voltar", :back, class: "btn btn-primary" %>
-
-<% end %>
+</div>
