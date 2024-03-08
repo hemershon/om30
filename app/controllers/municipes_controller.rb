@@ -37,6 +37,7 @@ class MunicipesController < ApplicationController
 
   def update
     @municipe = Municipe.find(params[:id])
+    byebug
     if @municipe.update(municipe_params)
       send_email(@municipe)
       send_sms(@municipe)
@@ -64,7 +65,7 @@ class MunicipesController < ApplicationController
 
   def municipe_params
     params.require(:municipe).permit(:nome_completo, :cpf, :cns, :email, 
-      :data_nascimento, :telefone, :status, endereco_attributes: [:cep,
+      :data_nascimento, :telefone, :status, endereco_attributes: [:id, :cep,
       :bairro, :cidade, :codigo_ibge, :complemento, :logradouro, :uf], fotos: [])
   end
 end
