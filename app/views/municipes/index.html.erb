@@ -15,6 +15,12 @@
           <th>Nome Completo</th>
           <th>Status</th>
           <th>Telefone</th>
+          <th>CEP</th>
+          <th>Bairro</th>
+          <th>Cidade</th>
+          <th>Estado</th>
+          <th>Complemento</th>
+          <th>Logradouro</th>
           <th colspan="2"></th>
         </tr>
       </thead>
@@ -30,6 +36,12 @@
             <td><%= municipe.nome_completo %></td>
             <td><%= municipe.status ? 'Ativo' : 'Inativo' %></td>
             <td><%= municipe.telefone %></td>
+            <td><%= municipe.endereco.cep  if municipe.endereco %></td>
+            <td><%= municipe.endereco.bairro if municipe.endereco  %></td>
+            <td><%= municipe.endereco.cidade if municipe.endereco %></td>
+            <td><%= municipe.endereco.uf  if municipe.endereco %></td>
+            <td><%= municipe.endereco.complemento  if municipe.endereco %></td>
+            <td><%= municipe.endereco.logradouro  if municipe.endereco %></td>
             <td><%= link_to 'Mostrar', municipe %></td>
             <td><%= link_to 'Editar', edit_municipe_path(municipe) %></td>
           </tr>

@@ -4,7 +4,10 @@ class MunicipesController < ApplicationController
   end
 
   def show
-    @municipe = Municipe.find(params[:id])
+    @municipe = Municipe.find_by(id: params[:id])
+    if @municipe.nil?
+      redirect_to municipes_path, alert: 'Munícipe não encontrado.'
+    end
   end
 
   def new
@@ -14,10 +17,16 @@ class MunicipesController < ApplicationController
 
   def create
     @municipe = Municipe.new(municipe_params)
+    byebug
+  
     if @municipe.save
       send_email(@municipe)
       send_sms(@municipe)
-      redirect_to @municipe, notice: 'Munícipe criado com sucesso.'
+  
+      respond_to do |format|
+        format.turbo_stream { redirect_to @municipe, notice: 'Munícipe criado com sucesso.' }
+        format.html { redirect_to @municipe, notice: 'Munícipe criado com sucesso.' }
+      end
     else
       render :new
     end
@@ -42,7 +51,7 @@ class MunicipesController < ApplicationController
   private
 
   def send_email(municipe)
-    MunicipeMailer.cadastro_confirmado(municipe).delivery_now
+    MunicipeMailer.cadastro_confirmado(municipe).deliver_now
   end
 
   def send_sms(municipe)

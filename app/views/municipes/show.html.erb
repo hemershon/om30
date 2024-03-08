@@ -1,10 +1,28 @@
-<h1>Detalhes do Munícipe</h1>
-<p><strong>Nome Completo:</strong> <%= @municipe.nome_completo %></p>
-<p><strong>CPF:</strong> <%= @municipe.cpf %></p>
-<p><strong>CNS:</strong> <%= @municipe.cns %></p>
-<p><strong>Email:</strong> <%= @municipe.email %></p>
-<p><strong>Data de Nascimento:</strong> <%= @municipe.data_nascimento %></p>
-<p><strong>Telefone:</strong> <%= @municipe.telefone %></p>
-<p><strong>Status:</strong> <%= @municipe.status ? 'Ativo' : 'Inativo' %></p>
-<%= link_to 'Editar', edit_municipe_path(@municipe) %> |
-<%= link_to 'Voltar', municipes_path %>
+<div class="card">
+  <div class="card-header">
+    Detalhes do Munícipe
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Informações Pessoais</h5>
+    <p class="card-text"><strong>Nome Completo:</strong> <%= @municipe.nome_completo %></p>
+    <p class="card-text"><strong>CPF:</strong> <%= @municipe.cpf %></p>
+    <p class="card-text"><strong>CNS:</strong> <%= @municipe.cns %></p>
+    <p class="card-text"><strong>Email:</strong> <%= @municipe.email %></p>
+    <p class="card-text"><strong>Data de Nascimento:</strong> <%= @municipe.data_nascimento %></p>
+    <p class="card-text"><strong>Telefone:</strong> <%= @municipe.telefone %></p>
+    <p class="card-text"><strong>Status:</strong> <%= @municipe.status ? 'Ativo' : 'Inativo' %></p>
+
+    <h5 class="card-title">Endereço</h5>
+    <% if @municipe.endereco %>
+      <p class="card-text"><strong>CEP:</strong> <%= @municipe.endereco.cep %></p>
+      <p class="card-text"><strong>Bairro:</strong> <%= @municipe.endereco.bairro %></p>
+      <p class="card-text"><strong>Cidade:</strong> <%= @municipe.endereco.cidade %></p>
+      <p class="card-text"><strong>Estado:</strong> <%= @municipe.endereco.uf %></p>
+      <p class="card-text"><strong>Complemento:</strong> <%= @municipe.endereco.complemento %></p>
+      <p class="card-text"><strong>Logradouro:</strong> <%= @municipe.endereco.logradouro %></p>
+    <% end %>
+
+    <%= link_to 'Editar', edit_municipe_path(@municipe), class: 'btn btn-primary' %>
+    <%= link_to 'Voltar', municipes_path, class: 'btn btn-secondary' %>
+  </div>
+</div>
