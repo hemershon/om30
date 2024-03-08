@@ -56,8 +56,8 @@ class MunicipesController < ApplicationController
   end
 
   def municipe_params
-    params.require(:municipe).permit(:nome_completo, :cpf, :cns, :foto, :email, 
+    params.require(:municipe).permit(:nome_completo, :cpf, :cns, :email, 
       :data_nascimento, :telefone, :status, endereco_attributes: [:cep,
-      :bairro, :cidade, :codigo_ibge, :complemento, :logradouro, :uf])
+      :bairro, :cidade, :codigo_ibge, :complemento, :logradouro, :uf], fotos: [])
   end
 end

@@ -79,13 +79,13 @@
       <% end %>
 
       <div class="mb-3">
-        <%= form.label :foto, class: "form-label" %>
-        <%= form.file_field :foto, class: "form-control" %>
+        <%= form.label :status, class: "form-label" %>
+        <%= form.check_box :status, class: "form-check-input" %>
       </div>
 
       <div class="mb-3">
-        <%= form.label :status, class: "form-label" %>
-        <%= form.check_box :status, class: "form-check-input" %>
+        <%= form.label :foto, class: "form-label" %>
+        <%= form.file_field :fotos, multiple: true, class: "form-control" %>
       </div>
 
       <div class="mb-3">

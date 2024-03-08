@@ -63,7 +63,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_08_123028) do
     t.string "email"
     t.date "data_nascimento"
     t.string "telefone"
-    t.string "foto"
+    t.json "fotos"
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

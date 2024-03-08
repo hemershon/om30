@@ -7,7 +7,7 @@
 #  cpf             :string
 #  data_nascimento :date
 #  email           :string
-#  foto            :string
+#  fotos           :json
 #  nome_completo   :string
 #  status          :boolean
 #  telefone        :string
@@ -15,7 +15,7 @@
 #  updated_at      :datetime         not null
 #
 class Municipe < ApplicationRecord
-  has_one_attached :foto
+  has_many_attached :fotos
   has_one :endereco
 
   accepts_nested_attributes_for :endereco
@@ -23,8 +23,6 @@ class Municipe < ApplicationRecord
   validates :cpf, presence: true, format: { with: /\A\d{11}\z/, message: "CPF inválido" }
   validates :cns, presence: true, uniqueness: true, format: { with: /\A\d{15}\z/, message: "formato inválido" }
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: "formato inválido" }
-  validates :cns, presence: true
-  validates :email, presence: true
   validates :data_nascimento, presence: true
 
   validate :data_nascimento_valida?
@@ -35,7 +33,7 @@ class Municipe < ApplicationRecord
     errors.add(:data_nascimento, 'Data de nascimento inválida') unless data_nascimento_valida?
   end
 
-  def data_nascimento_valida?
+  def data_nascimento_valido?
     return false if data_nascimento.nil?
 
     begin
