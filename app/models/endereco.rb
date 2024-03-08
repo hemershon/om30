@@ -26,8 +26,8 @@ class Endereco < ApplicationRecord
   belongs_to :municipe
 
   validates :logradouro, presence: true
-  validates :numero, presence: true
   validates :cidade, presence: true
-  validates :estado, presence: true
+  validates :bairro, presence: true
+  validates :uf, presence: true
   validates :cep, presence: true, format: { with: /\A\d{5}-\d{3}\z/, message: "Formato de CEP inválido" }
 end
