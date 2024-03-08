@@ -21,8 +21,8 @@ class Municipe < ApplicationRecord
   accepts_nested_attributes_for :endereco
 
   validates :cpf, presence: true, format: { with: /\A\d{11}\z/, message: "CPF inválido" }
-  validates :cns, presence: true, uniqueness: true, format: { with: /\A\d{15}\z/, message: "formato inválido" }
-  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: "formato inválido" }
+  validates :cns, presence: true
+  validates :email, presence: true
   validates :data_nascimento, presence: true
 
   validate :data_nascimento_valida?
