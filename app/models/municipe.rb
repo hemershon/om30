@@ -37,8 +37,8 @@ class Municipe < ApplicationRecord
     return false if data_nascimento.nil?
 
     begin
-      data = Date.strptime(data_nascimento, '%d/%m/%Y')
       hoje = Date.today
+      data = data_nascimento
 
       return data <= hoje && data.year > 1900 && data.month.between?(1, 12) && data.day.between?(1, Date.new(data.year, data.month, -1).day)
     rescue ArgumentError
