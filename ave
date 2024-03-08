@@ -1,0 +1,13 @@
+=> 
+[32m#<Municipe:0x00007f62ac7ba640[0m
+ id: [34m[1m5[0m,
+ nome_completo: [31m[1m"[0m[31mHEMERSHON LUIZ DOS SANTOS DA SILVA[0m[31m[1m"[0m,
+ cpf: [31m[1m"[0m[31m66666666666[0m[31m[1m"[0m,
+ cns: [31m[1m"[0m[31m123[0m[31m[1m"[0m,
+ email: [31m[1m"[0m[31mhernangior@gmail.com[0m[31m[1m"[0m,
+ data_nascimento: Wed, 29 Jan 2014,
+ telefone: [31m[1m"[0m[31m86999263314[0m[31m[1m"[0m,
+ foto: [36m[1mnil[0m,
+ status: [36m[1mtrue[0m,
+ created_at: Fri, 08 Mar 2024 12:30:57.526042000 UTC +00:00,
+ updated_at: Fri, 08 Mar 2024 12:30:57.526042000 UTC +00:00[32m>[0m
