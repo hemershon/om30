@@ -14,6 +14,7 @@ class MunicipesController < ApplicationController
 
   def create
     @municipe = Municipe.new(municipe_params)
+    byebug
     if @municipe.save
       send_email(@municipe)
       send_sms(@municipe)
@@ -55,7 +56,7 @@ class MunicipesController < ApplicationController
   end
 
   def municipe_params
-    params.require(:municipe).permit(:nome_completo, :cpf, :cns, :email, 
+    params.require(:municipe).permit(:nome_completo, :cpf, :cns, :foto, :email, 
       :data_nascimento, :telefone, :status, endereco_attributes: [:cep,
       :bairro, :cidade, :codigo_ibge, :complemento, :logradouro, :uf])
   end

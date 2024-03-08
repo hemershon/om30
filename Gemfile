@@ -14,6 +14,8 @@ gem 'rubocop', '~> 1.36', require: false
 gem 'sass-rails', '~> 6.0'
 gem 'sendgrid-ruby'
 gem 'twilio-ruby'
+gem 'cpf_cnpj'
+gem 'mail'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
